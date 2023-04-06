@@ -146,6 +146,11 @@ impl Client {
         Ok(self.new_transaction(timestamp, TransactionOptions::new_optimistic()))
     }
 
+    pub async fn begin_txn(&self, timestamp: Timestamp) -> Result<Transaction> {
+        debug!(self.logger, "creating new optimistic transaction");
+        Ok(self.new_transaction(timestamp, TransactionOptions::new_optimistic()))
+    }    
+
     /// Creates a new pessimistic [`Transaction`].
     ///
     /// Write operations will lock the data until committed, thus commit requests should not suffer

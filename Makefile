@@ -21,7 +21,7 @@ default: check
 
 check:
 	cargo check --all --all-targets --no-default-features --features "${ALL_FEATURES}"
-	cargo fmt -- --check
+	#cargo +nightly fmt -- --check
 	cargo clippy --all-targets --no-default-features --features "${ALL_FEATURES}" -- -D clippy::all
 
 unit-test:

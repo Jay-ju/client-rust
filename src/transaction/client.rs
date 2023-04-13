@@ -146,7 +146,7 @@ impl Client {
         Ok(self.new_transaction(timestamp, TransactionOptions::new_optimistic()))
     }
 
-    pub async fn begin_txn(&self, version: Long) -> Result<Transaction> {
+    pub async fn begin_txn(&self, version: u64) -> Result<Transaction> {
         debug!(self.logger, "creating new optimistic transaction");
         Ok(self.new_transaction(Timestamp::from_version(version), TransactionOptions::new_optimistic()))
     }    

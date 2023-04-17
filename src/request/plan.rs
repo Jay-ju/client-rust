@@ -90,7 +90,7 @@ where
             let (shard, region_store) = shard?;
             let mut clone = current_plan.clone();
             clone.apply_shard(shard, &region_store)?;
-            let handle = tokio::spawn_blocking(Self::single_shard_handler(
+            let handle = tokio::task::spawn(Self::single_shard_handler(
                 pd_client.clone(),
                 clone,
                 region_store,
@@ -122,7 +122,7 @@ where
     }
 
     #[async_recursion]
-    fn single_shard_handler(
+    async fn single_shard_handler(
         pd_client: Arc<PdC>,
         plan: P,
         region_store: RegionStore,

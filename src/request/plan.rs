@@ -121,7 +121,7 @@ where
         }
     }
 
-    #[async_recursion]
+    #[async_recursion(?Send)]
     async fn single_shard_handler(
         pd_client: Arc<PdC>,
         plan: P,

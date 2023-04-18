@@ -90,14 +90,14 @@ where
             let (shard, region_store) = shard?;
             let mut clone = current_plan.clone();
             clone.apply_shard(shard, &region_store)?;
-            let handle = tokio::task::spawn(async move { Self::single_shard_handler(
+            let handle = tokio::spawn( Self::single_shard_handler(
                 pd_client.clone(),
                 clone,
                 region_store,
                 backoff.clone(),
                 permits.clone(),
                 preserve_region_results,
-            ) } );
+            ));
             handles.push(handle);
         }
 

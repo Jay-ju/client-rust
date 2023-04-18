@@ -7,7 +7,7 @@ use async_trait::async_trait;
 use futures::{future::try_join_all, prelude::*};
 use tikv_client_proto::{errorpb, errorpb::EpochNotMatch, kvrpcpb};
 use tikv_client_store::{HasKeyErrors, HasRegionError, HasRegionErrors, KvClient};
-use tokio::sync::Semaphore;
+use tokio::{sync::Semaphore, self};
 
 use crate::{
     backoff::Backoff,

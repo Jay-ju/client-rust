@@ -52,7 +52,7 @@ serde_derive = "1.0"
 slog = { version = "2.3", features = ["max_level_trace", "release_max_level_debug"] }
 slog-term = { version = "2.4" }
 thiserror = "1"
-tokio = { version = "1", features = [ "sync", "rt-multi-thread", "macros" ] }
+tokio = { version = "1", features = [ "full" ] }
 async-recursion = "1"
 
 tikv-client-common = { version = "0.1.0", path = "tikv-client-common" }
@@ -69,8 +69,8 @@ proptest = "1"
 proptest-derive = "0.3"
 serial_test = "0.5.0"
 simple_logger = "1"
-tokio = { version = "1", features = [ "sync", "rt-multi-thread", "macros" ] }
-reqwest = {version = "0.11", default-features = false, features = ["native-tls-vendored"]}
+tokio = { version = "1", features = [ "full" ] }
+reqwest = {version = "0.11",  features = ["native-tls-vendored"]}
 serde_json = "1"
 
 [workspace]
